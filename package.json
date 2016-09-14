@@ -1,0 +1,37 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "github:scola84/node-test-api",
+  "author": "M.C. van den Boogaart <scola@kvdb.name>",
+  "main": "index.js",
+  "dependencies": {
+    "@scola/api-codec": "^1.0.0",
+    "@scola/api-codec-json": "^1.0.0",
+    "@scola/api-http": "^1.0.0",
+    "@scola/api-model": "^1.0.0",
+    "@scola/api-router": "^1.0.0",
+    "@scola/api-ws": "^1.0.0",
+    "@scola/cache-memcache": "^1.0.0",
+    "@scola/mysql": "^1.0.0",
+    "@scola/test": "github:scola84/node-test",
+    "@scola/websocket": "^2.0.0",
+    "busboy": "^0.2.13",
+    "memcached": "^2.2.2",
+    "mysql": "^2.11.1",
+    "series": "^0.3.3",
+    "ws": "^1.1.1"
+  },
+  "devDependencies": {
+    "rollup": "^0.35.10",
+    "rollup-plugin-commonjs": "^4.1.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "watch": "^0.19.2"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "serve": "pm2 start dist/server.js --name \"api\"",
+    "serve:watch": "pm2 start dist/server.js --name \"api\" --watch && npm run watch",
+    "watch": "node_modules/.bin/watch \"npm run build\" src/ node_modules/@scola/ -d"
+  }
+}
