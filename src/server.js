@@ -1,5 +1,5 @@
 import ws from 'ws';
-import http from 'http';
+import https from 'https';
 import mysql from 'mysql';
 import MemCached from 'memcached';
 import series from 'async/series';
@@ -16,7 +16,7 @@ import { extend } from '@scola/mysql';
 import { MemCache } from '@scola/cache-memcache';
 
 import { server as serverTest } from '@scola/test';
-import config from './config';
+import config from '../conf/index';
 
 function parseAddress(connection) {
   return connection && connection.address().address || '';
@@ -74,12 +74,19 @@ function logClose(event) {
 }
 
 const socket = new WebSocket(config.pubsub.address, null, ws);
-const httpServer = new http.Server();
-const wsServer = new ws.Server({ server: httpServer });
-const memcached = new MemCached();
+
+const httpServer = new https.Server({
+  pfx: config.api.pfx,
+  ca: config.api.ca
+});
+
+const wsServer = new ws.Server({
+  server: httpServer
+});
 
 const router = new Router();
 const factory = new ServerFactory();
+const memcached = new MemCached();
 
 const pubsub = new Connection()
   .socket(socket)
@@ -96,8 +103,7 @@ const wsConnector = new WsConnector()
   .codec(codec);
 
 const cache = new MemCache()
-  .storage(memcached)
-  .lifetime(10 * 1000);
+  .storage(memcached);
 
 const database = mysql.createConnection(config.mysql);
 
@@ -131,6 +137,7 @@ router.filter(responseMediaTypes(encoder()));
 
 router.filter((request, response, next) => {
   response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Expose-Headers', 'x-put-id');
 
   if (request.method() === 'OPTIONS') {
     response.status(204);

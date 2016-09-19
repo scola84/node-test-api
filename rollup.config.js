@@ -9,6 +9,8 @@ export default {
     resolve({
       jsnext: true,
       skip: [
+        'fs',
+        'https',
         'memcached',
         'mysql',
         'ws'
