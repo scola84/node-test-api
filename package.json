@@ -9,7 +9,7 @@
     "@scola/api-codec": "^1.0.0",
     "@scola/api-codec-json": "^1.0.0",
     "@scola/api-http": "^1.0.0",
-    "@scola/api-model": "^1.0.0",
+    "@scola/api-model": "^1.0.1",
     "@scola/api-router": "^1.0.0",
     "@scola/api-ws": "^1.0.0",
     "@scola/cache-memcache": "^1.0.0",
@@ -23,8 +23,8 @@
     "ws": "^1.1.1"
   },
   "devDependencies": {
-    "rollup": "^0.35.10",
-    "rollup-plugin-commonjs": "^4.1.0",
+    "rollup": "^0.36.0",
+    "rollup-plugin-commonjs": "^5.0.4",
     "rollup-plugin-node-resolve": "^2.0.0",
     "watch": "^0.19.2"
   },
