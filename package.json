@@ -30,8 +30,6 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "serve": "pm2 start dist/server.js --name \"api\"",
-    "serve:watch": "pm2 start dist/server.js --name \"api\" --watch && npm run watch",
-    "watch": "node_modules/.bin/watch \"npm run build\" src/ node_modules/@scola/ -d"
+    "serve": "pm2 start dist/server.js --name \"api\""
   }
 }
