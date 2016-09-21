@@ -16,7 +16,7 @@ import { extend } from '@scola/mysql';
 import { MemCache } from '@scola/cache-memcache';
 
 import { server as serverTest } from '@scola/test';
-import config from '../conf/index';
+import config from '../config';
 
 function parseAddress(connection) {
   return connection && connection.address().address || '';
@@ -130,22 +130,6 @@ wsConnector.on('error', logError);
 
 router.filter(requestMediaTypes(decoder()));
 router.filter(responseMediaTypes(encoder()));
-
-router.filter((request, response, next) => {
-  response.header('Access-Control-Allow-Origin', '*');
-  response.header('Access-Control-Expose-Headers', 'x-put-id');
-
-  if (request.method() === 'OPTIONS') {
-    response.status(204);
-    response.header('Access-Control-Allow-Headers', 'Content-Type');
-    response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
-    response.end();
-
-    return;
-  }
-
-  next();
-});
 
 serverRoutes(router, factory);
 serverTest(router, factory, database, pubsub);
