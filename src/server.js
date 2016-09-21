@@ -1,5 +1,5 @@
 import ws from 'ws';
-import https from 'https';
+import http from 'http';
 import mysql from 'mysql';
 import MemCached from 'memcached';
 import series from 'async/series';
@@ -74,11 +74,7 @@ function logClose(event) {
 }
 
 const socket = new WebSocket(config.pubsub.address, null, ws);
-
-const httpServer = new https.Server({
-  pfx: config.api.pfx,
-  ca: config.api.ca
-});
+const httpServer = new http.Server();
 
 const wsServer = new ws.Server({
   server: httpServer
