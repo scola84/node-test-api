@@ -16,7 +16,7 @@ import { extend } from '@scola/mysql';
 import { MemCache } from '@scola/cache-memcache';
 
 import { server as serverTest } from '@scola/test';
-import config from '../config';
+import { config } from '../config';
 
 function parseAddress(connection) {
   return connection && connection.address().address || '';
@@ -103,7 +103,7 @@ const cache = new MemCache()
 
 const database = mysql.createConnection(config.mysql);
 
-httpServer.listen(config.api.port);
+httpServer.listen(config.api.port, config.api.host);
 
 logStart();
 
@@ -145,6 +145,12 @@ process.on('SIGINT', () => {
     (callback) => {
       wsConnector.close(1001, 'delay=1');
       callback();
+    },
+    (callback) => {
+      httpServer.close(callback);
+    },
+    (callback) => {
+      wsServer.close(callback);
     },
     (callback) => {
       pubsub.close(1001);
