@@ -13,6 +13,7 @@ export default {
         'https',
         'memcached',
         'mysql',
+        'string_decoder',
         'ws'
       ]
     }),
