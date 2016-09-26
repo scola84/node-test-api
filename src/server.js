@@ -71,7 +71,7 @@ const wsConnector = new WsConnector()
 const cache = new MemCache()
   .storage(memcached);
 
-const database = extend(mysql.createConnection(config.mysql));
+const database = extend(mysql.createPool(config.mysql));
 
 const reconnector = new Reconnector()
   .class(WebSocket)
@@ -111,9 +111,6 @@ const routerLog = new RouterHandler()
 factory
   .cache(cache)
   .connection(pubsubConnection);
-
-database
-  .connect();
 
 httpServer
   .listen(config.api.port, config.api.host);
