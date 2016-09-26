@@ -1,3 +1,5 @@
-config.js
+conf
 dist
 node_modules
+
+!conf/default.js
