@@ -8,11 +8,11 @@
   "dependencies": {
     "@scola/api-codec": "^1.0.0",
     "@scola/api-codec-json": "^1.0.0",
-    "@scola/api-http": "^1.1.1",
-    "@scola/api-log": "^1.0.0",
+    "@scola/api-http": "^1.2.0",
+    "@scola/api-log": "^1.0.1",
     "@scola/api-model": "^1.0.2",
     "@scola/api-router": "^1.0.0",
-    "@scola/api-ws": "^2.0.0",
+    "@scola/api-ws": "^2.0.1",
     "@scola/cache-memcache": "^1.0.0",
     "@scola/mysql": "^1.0.0",
     "@scola/test": "github:scola84/node-test",
@@ -26,11 +26,10 @@
   "devDependencies": {
     "rollup": "^0.36.0",
     "rollup-plugin-commonjs": "^5.0.4",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "watch": "^0.19.2"
+    "rollup-plugin-node-resolve": "^2.0.0"
   },
   "scripts": {
     "build": "rollup -c",
-    "serve": "pm2 start dist/server.js --name \"api\""
+    "serve": "pm2 start dist/server.js --name \"api-browser\""
   }
 }

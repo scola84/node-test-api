@@ -117,9 +117,10 @@ httpServer
 
 reconnector.on('error', (error) => {
   consoleLogger.log({
+    address: config.pubsub.address,
     date: new Date(),
     id: config.log.id,
-    name: config.log.name,
+    name: config.log.pubsub.name,
     text: error.message,
     type: 'error'
   });
