@@ -10,7 +10,7 @@
     "@scola/api-codec-json": "^1.0.0",
     "@scola/api-http": "^1.2.0",
     "@scola/api-log": "^1.0.1",
-    "@scola/api-model": "^1.0.2",
+    "@scola/api-model": "^1.0.3",
     "@scola/api-router": "^1.0.0",
     "@scola/api-ws": "^2.0.1",
     "@scola/cache-memcache": "^1.0.0",
