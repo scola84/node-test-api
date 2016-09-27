@@ -8,11 +8,11 @@
   "dependencies": {
     "@scola/api-codec": "^1.0.0",
     "@scola/api-codec-json": "^1.0.0",
-    "@scola/api-http": "^1.2.0",
+    "@scola/api-http": "^2.0.0",
     "@scola/api-log": "^1.0.1",
     "@scola/api-model": "^1.0.3",
     "@scola/api-router": "^1.0.0",
-    "@scola/api-ws": "^2.0.1",
+    "@scola/api-ws": "^3.0.0",
     "@scola/cache-memcache": "^1.0.0",
     "@scola/mysql": "^1.0.0",
     "@scola/test": "github:scola84/node-test",

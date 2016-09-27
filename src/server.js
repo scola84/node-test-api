@@ -15,7 +15,7 @@ import {
   encoder
 } from '@scola/api-codec-json';
 
-import { Connector as HttpConnector } from '@scola/api-http';
+import { HttpConnector } from '@scola/api-http';
 
 import {
   ConnectionHandler,
@@ -35,8 +35,8 @@ import {
 } from '@scola/api-router';
 
 import {
-  Connector as WsConnector,
-  Connection
+  WsConnector,
+  WsConnection
 } from '@scola/api-ws';
 
 import { MemCache } from '@scola/cache-memcache';
@@ -51,7 +51,7 @@ const factory = new ServerFactory();
 const memcached = new MemCached(config.memcached.address,
   config.memcached.options);
 
-const pubsubConnection = new Connection()
+const pubsubConnection = new WsConnection()
   .auto(false)
   .router(router)
   .codec(codec);
