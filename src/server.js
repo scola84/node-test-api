@@ -1,7 +1,7 @@
+import parallel from 'async/parallel';
 import http from 'http';
 import MemCached from 'memcached';
 import mysql from 'mysql';
-import parallel from 'async/parallel';
 import WebSocket from 'ws';
 
 import {

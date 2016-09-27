@@ -2,23 +2,21 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
-  entry: './src/server.js',
   dest: './dist/server.js',
+  entry: './src/server.js',
   format: 'cjs',
   plugins: [
     resolve({
       jsnext: true,
+      preferBuiltins: true,
       skip: [
-        'fs',
-        'https',
+        'async',
+        'http',
         'memcached',
         'mysql',
-        'string_decoder',
         'ws'
       ]
     }),
-    commonjs({
-      exclude: ['**/lodash-es/**']
-    })
+    commonjs()
   ]
 };
